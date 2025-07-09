@@ -1,6 +1,8 @@
 #ifndef _STRING_H_
 #define _STRING_H_
 #include <ostream>
+#include <istream>
+
 
 class String
 {
@@ -24,19 +26,13 @@ public:
 	const char* get_str() const;
 	int len() const;
 
-
-
-
 	// Operator Overloading
 	String& operator=(const char *rhs);
 
 	String operator+(const char* rhs);
 	String operator+(const String &rhs);
-
-	
-
 };
 
 std::ostream& operator<<(std::ostream& os, const String& obj);
-
+std::istream& operator>>(std::istream& is, String& obj);
 #endif // !_STRING_H_

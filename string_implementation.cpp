@@ -20,9 +20,11 @@ int main() {
     std::cout << "s2 (s1 + \" there!\"): " << s2 << std::endl;
 
     // Add a String to s1
-    String s3(" General");
-    String s4 = s2 + s3;
-    std::cout << "s4 (s2 + s3): " << s4 << std::endl;
+    String s3{};
+    std::cout << "What's your name? ";
+    std::cin >> s3;
+    String s4 = s2 + " " + s3;
+    std::cout << "\n" << "s4 (s2 + s3): " << s4 << std::endl;
 
     return 0;
 }

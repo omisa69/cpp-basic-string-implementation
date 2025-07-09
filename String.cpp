@@ -95,3 +95,11 @@ std::ostream& operator<<(std::ostream& os, const String &obj) {
     os << obj.get_str();
     return os;
 }
+
+std::istream& operator>>(std::istream& is, String& obj) {
+    char* input = new char[2000];
+    is.get(input, 2000);
+    obj = input;  // uses operator=(const char*)
+    delete[] input;
+    return is;
+}
