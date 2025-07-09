@@ -1,6 +1,6 @@
 #ifndef _STRING_H_
 #define _STRING_H_
-
+#include <ostream>
 
 class String
 {
@@ -21,15 +21,22 @@ public:
 	~String();
 
 	// Useful Functions
-	char* get_str();
-	int len();
+	const char* get_str() const;
+	int len() const;
 
 
 
 
 	// Operator Overloading
-	String& operator=(const char *chars);
-	String operator+(const char* chars);
+	String& operator=(const char *rhs);
+
+	String operator+(const char* rhs);
+	String operator+(const String &rhs);
+
+	
+
 };
+
+std::ostream& operator<<(std::ostream& os, const String& obj);
 
 #endif // !_STRING_H_

@@ -1,43 +1,28 @@
 #include <iostream>
 #include "String.h"
 
+int main() {
+    // Create a String from a literal
+    String s1("Hello");
 
+    // Print it
+    std::cout << "s1: " << s1 << std::endl;
 
-int get_length(const char chars []) {
-    int length{}, index{};
-    char c{chars[index]};
-    while (c != '\0') {
-        length++;
-        index++;
-        c = chars[index];
-    }
-    std::cout << "Length :" << length << std::endl;
-    return length;
-}
+    // Get length
+    std::cout << "Length of s1: " << s1.len() << std::endl;
 
-char* get_str(const char word []) {
-    int length = get_length(word);
-    char* string = new char[length+1];
-    for (size_t i = 0; i < length; i++)
-    {
-        string[i] = word[i];
-    }
-    string[length] = '\0';
-    return string;
-}
+    // Use assignment operator
+    s1 = "Hi";
+    std::cout << "s1 after assignment: " << s1 << std::endl;
 
-int main()
-{
-    String name {"Omid"};
-    //name = "Sam";
-    //std::cout << name.get_str() << std::endl;
-    //std::cout << "Length :" << name.len() << std::endl;
-    //name = "Alex";
-    //std::cout << name.get_str() << std::endl;
-    //std::cout << "Length :" << name.len() << std::endl;
-    std::cout << (name + " Amir").get_str() << std::endl;
-    //std::cout << name.get_str() << std::endl;
-    //std::cout << "Length :" << name.len() << std::endl;
+    // Add a C-string to s1
+    String s2 = s1 + " there!";
+    std::cout << "s2 (s1 + \" there!\"): " << s2 << std::endl;
+
+    // Add a String to s1
+    String s3(" General");
+    String s4 = s2 + s3;
+    std::cout << "s4 (s2 + s3): " << s4 << std::endl;
 
     return 0;
 }
