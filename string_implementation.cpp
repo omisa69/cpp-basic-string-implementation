@@ -29,8 +29,15 @@ char* get_str(const char word []) {
 int main()
 {
     String name {"Omid"};
-    name = "Amir";
-    std::cout << name.get_str() << std::endl;
-    std::cout << "Length :" << name.len() << std::endl;
+    //name = "Sam";
+    //std::cout << name.get_str() << std::endl;
+    //std::cout << "Length :" << name.len() << std::endl;
+    //name = "Alex";
+    //std::cout << name.get_str() << std::endl;
+    //std::cout << "Length :" << name.len() << std::endl;
+    std::cout << (name + " Amir").get_str() << std::endl;
+    //std::cout << name.get_str() << std::endl;
+    //std::cout << "Length :" << name.len() << std::endl;
+
     return 0;
 }
