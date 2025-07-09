@@ -28,10 +28,9 @@ char* get_str(const char word []) {
 
 int main()
 {
-    char* word = get_str("7");
-    std::cout << "Word: " << word << std::endl;
-    std::cout << "Length: " << get_length(word) << std::endl;
-    delete[] word;
-    word = nullptr;
+    String name {"Omid"};
+    name = "Amir";
+    std::cout << name.get_str() << std::endl;
+    std::cout << "Length :" << name.len() << std::endl;
     return 0;
 }

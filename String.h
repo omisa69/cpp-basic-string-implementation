@@ -5,15 +5,29 @@
 class String
 {
 private:
-	char *str;
+	char* str{nullptr};
 	int length;
+	int get_length(const char chars[]);
+
 public:
-	// Constructor
+
+	// Constructors
 	String();
 	String(const char chars []);
-	char* get_str();
+	// Copy Constructor
+	
 	// Destructor
 	~String();
+	// Useful Functions
+	char* get_str();
+	int len();
+
+
+
+
+	// Operator Overloading
+	String &operator=(const char *chars);
+	
 };
 
 #endif // !_STRING_H_
