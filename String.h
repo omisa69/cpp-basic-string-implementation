@@ -7,18 +7,19 @@
 class String
 {
 private:
+	// Private Variables
 	char* str;
 	int length;
+	// Private Functions
 	int get_length(const char chars[]);
 	void set_str(const char chars[]);
-	void copy(char* const ptr, const char value [], int begin=0);
+	void copy(char* const ptr, const char value[], int begin = 0);
 public:
 
 	// Constructors
-	String();
-	String(const char chars []);
+	String(const char chars[] = "");
 	// Copy Constructor
-	
+	String(const String& source);
 	// Destructor
 	~String();
 
@@ -27,12 +28,13 @@ public:
 	int len() const;
 
 	// Operator Overloading
-	String& operator=(const char *rhs);
+	String& operator=(const char* rhs);
 
 	String operator+(const char* rhs);
-	String operator+(const String &rhs);
+	String operator+(const String& rhs);
 };
-
+// Operator Overloading for Input/Output
 std::ostream& operator<<(std::ostream& os, const String& obj);
 std::istream& operator>>(std::istream& is, String& obj);
+
 #endif // !_STRING_H_

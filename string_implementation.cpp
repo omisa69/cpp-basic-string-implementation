@@ -20,7 +20,7 @@ int main() {
     std::cout << "s2 (s1 + \" there!\"): " << s2 << std::endl;
 
     // Add a String to s1
-    String s3{};
+    String s3;
     std::cout << "What's your name? ";
     std::cin >> s3;
     String s4 = s2 + " " + s3;

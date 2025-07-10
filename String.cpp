@@ -8,11 +8,7 @@ String::String(const char chars[])
     copy(str, chars);
 }
 
-// Default Constructor
-String::String()
-	: String { "" } {
-} // Delegates to the main constructor with ""
-
+// The Copy Constructor
 
 const char* String::get_str() const {
 	return str;
