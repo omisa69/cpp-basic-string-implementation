@@ -57,9 +57,134 @@ void String::copy(char* const ptr, const char value[], int begin) {
 
 }
 
+char String::upper_char(char c) {
+    if (c >= 'a' && c <= 'z') {
+        return c - ('a' - 'A');
+    }
+    else {
+        switch (c) {
+            // Nordic/German (your original ones)
+        case 'å': return 'Å';
+        case 'ä': return 'Ä';
+        case 'ö': return 'Ö';
+        case 'æ': return 'Æ';
+        case 'ø': return 'Ø';
+        case 'ü': return 'Ü';
+
+            // French + Spanish accents
+        case 'é': return 'É';
+        case 'è': return 'È';
+        case 'ê': return 'Ê';
+        case 'ë': return 'Ë';
+        case 'à': return 'À';
+        case 'â': return 'Â';
+        case 'î': return 'Î';
+        case 'ï': return 'Ï';
+        case 'ô': return 'Ô';
+        case 'ù': return 'Ù';
+        case 'û': return 'Û';
+        case 'ç': return 'Ç';
+
+        case 'ñ': return 'Ñ';  // Spanish
+        case 'á': return 'Á';  // Spanish + French
+        case 'í': return 'Í';  // Spanish
+        case 'ó': return 'Ó';  // Spanish
+        case 'ú': return 'Ú';  // Spanish
+
+        default:
+            return c;
+        }
+    }
+}
+
+char String::lower_char(char C) {
+    if (C >= 'A' && C <= 'Z') {
+        return C + ('a' - 'A');
+    }
+    else {
+        switch (C) {
+            // Nordic/German
+        case 'Å': return 'å';
+        case 'Ä': return 'ä';
+        case 'Ö': return 'ö';
+        case 'Æ': return 'æ';
+        case 'Ø': return 'ø';
+        case 'Ü': return 'ü';
+
+            // French + Spanish accents
+        case 'É': return 'é';
+        case 'È': return 'è';
+        case 'Ê': return 'ê';
+        case 'Ë': return 'ë';
+        case 'À': return 'à';
+        case 'Â': return 'â';
+        case 'Î': return 'î';
+        case 'Ï': return 'ï';
+        case 'Ô': return 'ô';
+        case 'Ù': return 'ù';
+        case 'Û': return 'û';
+        case 'Ç': return 'ç';
+
+        case 'Ñ': return 'ñ';  // Spanish
+        case 'Á': return 'á';  // Spanish/French
+        case 'Í': return 'í';  // Spanish
+        case 'Ó': return 'ó';  // Spanish
+        case 'Ú': return 'ú';  // Spanish
+
+        default:
+            return C;
+        }
+    }
+}
+
+
 // Usefule Functions
 int String::len() const {
     return length;
+}
+String String::toupper() {
+    char* buffer = new char[length + 1];
+    for (size_t i = 0; i < length; i++)
+    {
+        buffer[i] = upper_char(str[i]);
+    }
+    buffer[length] = '\0';
+    String uppercase(buffer);
+    delete [] buffer;
+    return uppercase;
+}
+
+String String::tolower() {
+    char* buffer = new char[length + 1];
+    for (size_t i = 0; i < length; i++)
+    {
+        buffer[i] = lower_char(str[i]);
+    }
+    buffer[length] = '\0';
+    String uppercase(buffer);
+    delete[] buffer;
+    return uppercase;
+}
+
+String String::totitle() {
+    String titlecase (str);
+    bool new_word{ true }; // The beginning of the fist word
+    for (size_t i = 0; i < length; i++)
+    {
+        char c = titlecase.str[i];
+        // Check if the character is white space:
+        if (c == ' ' || c == '\n' || c == '\t') {
+            new_word = true;
+        }
+        else if (new_word) {
+            titlecase.str[i] = upper_char(c);
+            new_word = false;
+        }
+        else {
+            titlecase.str[i] = lower_char(c);
+        }
+    }
+    return titlecase;
 }
 
 // Operator Overloading

@@ -25,18 +25,15 @@ int main() {
     String s3;
     std::cout << "What's your name? ";
     std::cin >> s3;
-    String s4 = s2 + " " + s3 + ".";
-    std::cout << "\n" << "s4 (s2 + s3): " << s4 << std::endl;
-
+    String s4 = s2 + " " + s3.totitle() + ".";
+    std::cout << '\n' << "s4(s2 + s3) : " << s4 << std::endl;
+    std::cout << "Uppercase: " << s3.toupper() << std::endl;
+    std::cout << "Lowercase: " << s3.tolower() << std::endl;
     String s5, s6;
     s5 = 16;
     s6 = 16.2;
     std::cout << "The numeric value assigned respectively to s5 and s6: "
               << s5 + " and " + s6
               << std::endl;
-    String hello = "Hello";
-    String world = " World!";
-    std::cout << "variables defined " << std::endl;
-    std::vector<String> words {String("hello"), String("world")};
     return 0;
 }
