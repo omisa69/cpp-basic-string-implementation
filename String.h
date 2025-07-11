@@ -19,7 +19,9 @@ private:
 	char lower_char(char C);
 public:
 	// Constructors
-	String(const char chars[] = "");
+	String(const char chars[]="");
+	String(int number);
+	String(double number);
 	// Copy Constructor
 	String(const String& source);
 	// Destructor
@@ -39,10 +41,12 @@ public:
 
 	String operator+(const char* rhs);
 	String operator+(const String& rhs);
+	String operator+=(const char* rhs);
 };
 
 // Operator Overloading for Input/Output
 std::ostream& operator<<(std::ostream& os, const String& obj);
 std::istream& operator>>(std::istream& is, String& obj);
-
+String operator+(const char* lhs, const String& rhs);
+void print(String obj, const char* end_with="\n");
 #endif // !_STRING_H_

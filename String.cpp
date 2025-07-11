@@ -1,6 +1,7 @@
 #include "String.h"
 #include <iostream>
 #include <stdio.h>
+#include <cstring> // for strcmp
 
 // The Main Constructor
 String::String(const char chars[])
@@ -8,10 +9,26 @@ String::String(const char chars[])
     set_str(chars);
 }
 
+// The Numberic Constructors
+String::String(int number)
+    : length{ 0 }, str{ nullptr } {
+    char buffer [100];
+    sprintf_s(buffer, "%d", number);
+    set_str(buffer);
+}
+String::String(double number)
+    : length{ 0 }, str{ nullptr } {
+    char buffer[200];
+    sprintf_s(buffer, "%f", number);
+    set_str(buffer);
+}
+
+
+
 // The Copy Constructor
 String::String(const String& source)
     : length{ 0 }, str{ nullptr } {
-    std::cout << "Copying String: " << source.str << std::endl;
+    /*std::cout << "Copying String: " << source.get_str() << std::endl;*/
     set_str(source.str);
 }
 
@@ -229,6 +246,13 @@ String String::operator+(const char* rhs) {
     return (*this + rhs_string);
 }
 
+String String::operator+=(const char* rhs) {
+    String rhs_string{ rhs };
+    String result = *this + rhs_string;
+    set_str(result.get_str());
+    return result;
+}
+
 
 std::ostream& operator<<(std::ostream& os, const String &obj) {
     os << obj.get_str();
@@ -241,4 +265,19 @@ std::istream& operator>>(std::istream& is, String& obj) {
     obj = input;  // uses operator=(const char*)
     delete[] input;
     return is;
+}
+
+String operator+(const char* lhs, const String& rhs) {
+    String lhs_string{ lhs };
+    String output = lhs_string + rhs;
+    return output;
+}
+
+void print(String obj, const char* end_with) {
+    if (strcmp(end_with, "\n") == 0) {
+        std::cout << obj << std::endl;
+    }
+    else {
+        std::cout << obj << end_with;
+    }
 }
