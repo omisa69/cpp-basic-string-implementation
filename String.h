@@ -2,7 +2,8 @@
 #define _STRING_H_
 #include <ostream>
 #include <istream>
-
+#include <initializer_list>
+#include <vector>
 
 class String
 {
@@ -15,7 +16,6 @@ private:
 	void set_str(const char chars[]);
 	void copy(char* const ptr, const char value[], int begin = 0);
 public:
-
 	// Constructors
 	String(const char chars[] = "");
 	// Copy Constructor
@@ -25,10 +25,12 @@ public:
 
 	// Useful Functions
 	const char* get_str() const;
-	int len() const;
+	int len() const;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
 
 	// Operator Overloading
 	String& operator=(const char* rhs);
+	String& operator=(int rhs);
+	String& operator=(double rhs);
 
 	String operator+(const char* rhs);
 	String operator+(const String& rhs);

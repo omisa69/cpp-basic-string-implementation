@@ -1,5 +1,6 @@
 #include "String.h"
 #include <iostream>
+#include <stdio.h>
 
 // The Main Constructor
 String::String(const char chars[])
@@ -9,6 +10,12 @@ String::String(const char chars[])
 }
 
 // The Copy Constructor
+String::String(const String& source)
+    : length{ source.len() }, str{nullptr} {
+    std::cout << "Copying String: " << source.get_str() << std::endl;
+    str = new char[length + 1];
+    copy(str, source.str);
+}
 
 const char* String::get_str() const {
 	return str;
@@ -58,8 +65,23 @@ int String::len() const {
 }
 
 // Operator Overloading
+// Assignment operator
 String& String::operator=(const char* rhs) {
     set_str(rhs);
+    return *this;
+}
+
+String& String::operator=(int rhs) {
+    char buffer[50];
+    sprintf_s(buffer, "%d", rhs);
+    set_str(buffer);
+    return *this;
+}
+
+String& String::operator=(double rhs) {
+    char buffer[100];
+    sprintf_s(buffer, "%f", rhs);
+    set_str(buffer);
     return *this;
 }
 

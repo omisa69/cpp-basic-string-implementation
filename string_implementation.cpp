@@ -1,5 +1,7 @@
 #include <iostream>
 #include "String.h"
+#include <vector>
+
 
 int main() {
     // Create a String from a literal
@@ -23,8 +25,18 @@ int main() {
     String s3;
     std::cout << "What's your name? ";
     std::cin >> s3;
-    String s4 = s2 + " " + s3;
+    String s4 = s2 + " " + s3 + ".";
     std::cout << "\n" << "s4 (s2 + s3): " << s4 << std::endl;
 
+    String s5, s6;
+    s5 = 16;
+    s6 = 16.2;
+    std::cout << "The numeric value assigned respectively to s5 and s6: "
+              << s5 + " and " + s6
+              << std::endl;
+    String hello = "Hello";
+    String world = " World!";
+    std::cout << "variables defined " << std::endl;
+    std::vector<String> words {String("hello"), String("world")};
     return 0;
 }
