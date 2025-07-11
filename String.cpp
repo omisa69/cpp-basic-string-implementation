@@ -4,17 +4,15 @@
 
 // The Main Constructor
 String::String(const char chars[])
-    : length{ get_length(chars) }, str{nullptr} {
-    str = new char[length + 1];
-    copy(str, chars);
+    : length{ 0 }, str{nullptr} {
+    set_str(chars);
 }
 
 // The Copy Constructor
 String::String(const String& source)
-    : length{ source.len() }, str{nullptr} {
-    std::cout << "Copying String: " << source.get_str() << std::endl;
-    str = new char[length + 1];
-    copy(str, source.str);
+    : length{ 0 }, str{ nullptr } {
+    std::cout << "Copying String: " << source.str << std::endl;
+    set_str(source.str);
 }
 
 const char* String::get_str() const {
@@ -85,29 +83,27 @@ String& String::operator=(double rhs) {
     return *this;
 }
 
+
+String String::operator+(const String& rhs) {
+    int new_length = length + rhs.length;
+    char* buffer = new char[new_length + 1];
+
+    copy(buffer, str);  // Copy old string    
+    copy(buffer, rhs.get_str(), length);  // Copy new characters after old string
+
+    String new_object{ buffer };
+
+    delete[] buffer; // clean up the heap memory
+
+    return new_object;
+}
+
 String String::operator+(const char* rhs) {
     String rhs_string {rhs};
     int rhs_length = get_length(rhs);
-    return *this + rhs_string;
+    return (*this + rhs_string);
 }
 
-String String::operator+(const String &rhs) {
-    int new_length = length + rhs.length;
-    char* new_str = new char[new_length+1];
-
-    // Copy old string
-    copy(new_str, str);
-
-    // Copy new characters after old string
-    copy(new_str, rhs.get_str(), length);
-    
-    String new_object{ new_str };
-    
-    delete[] new_str; // clean up the heap memory
-
-    return new_object;
-
-}
 
 std::ostream& operator<<(std::ostream& os, const String &obj) {
     os << obj.get_str();
