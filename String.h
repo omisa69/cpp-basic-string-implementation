@@ -12,14 +12,14 @@ private:
 	char* str;
 	int length;
 	// Private Functions
-	int get_length(const char chars[]);
-	void set_str(const char chars[]);
-	void copy(char* const ptr, const char value[], int begin = 0);
+	int get_length(const char* chars);
+	void set_str(const char* chars);
+	void copy(char* const ptr, const char* value, int begin = 0);
 	char upper_char(char c);
 	char lower_char(char C);
 public:
 	// Constructors
-	String(const char chars[]="");
+	String(const char* chars="");
 	String(int number);
 	String(double number);
 	// Copy Constructor
@@ -27,7 +27,7 @@ public:
 	// Destructor
 	~String();
 
-	// Useful Functions
+	// Utility Functions
 	const char* get_str() const;
 	int len() const;
 	String toupper();
@@ -38,7 +38,8 @@ public:
 	bool ends_with(const String& criterion);
 	bool starts_with(const String& criterion);
 	bool starts_with(const char* chars);
-
+	int find(const String& string);
+	int find(const char* chars);
 	// Operator Overloading
 	String& operator=(const char* rhs);
 	String& operator=(int rhs);
@@ -59,5 +60,8 @@ std::istream& operator>>(std::istream& is, String& obj);
 String operator+(const char* lhs, const String& rhs);
 String operator*(const int lhs, const String& rhs);
 
+// Utility friend function
 void print(String obj, const char* end_with="\n");
+
+
 #endif // !_STRING_H_

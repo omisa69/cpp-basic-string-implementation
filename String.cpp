@@ -4,7 +4,7 @@
 #include <cstring> // for strcmp
 
 // The Main Constructor
-String::String(const char chars[])
+String::String(const char* chars)
     : length{ 0 }, str{nullptr} {
     set_str(chars);
 }
@@ -23,8 +23,6 @@ String::String(double number)
     set_str(buffer);
 }
 
-
-
 // The Copy Constructor
 String::String(const String& source)
     : length{ 0 }, str{ nullptr } {
@@ -42,7 +40,7 @@ String::~String() {
 }
 
 // Helper functions
-int String::get_length(const char chars[]) {
+int String::get_length(const char* chars) {
     int length{}, index{};
     char c{ chars[index] };
     while (c != '\0') {
@@ -53,7 +51,7 @@ int String::get_length(const char chars[]) {
     return length;
 }
 
-void String::set_str(const char chars[]) {
+void String::set_str(const char* chars) {
     length = get_length(chars);
     if (str != nullptr) {
         delete[] str;
@@ -64,7 +62,7 @@ void String::set_str(const char chars[]) {
 
 }
 
-void String::copy(char* const ptr, const char value[], int begin) {
+void String::copy(char* const ptr, const char* value, int begin) {
     int value_length = get_length(value);
     for (size_t i = 0; i < value_length; i++)
     {
@@ -154,11 +152,11 @@ char String::lower_char(char C) {
     }
 }
 
-
 // Usefule Functions
 int String::len() const {
     return length;
 }
+
 String String::toupper() {
     char* buffer = new char[length + 1];
     for (size_t i = 0; i < length; i++)
@@ -239,6 +237,20 @@ bool String::starts_with(const char* chars) {
     return starts_with(String(chars));
 }
 
+int String::find(const String& string) {
+    string.length;
+    for (int i = 0; i < length; i++)
+    {
+        if (slice(i, length).starts_with(string))
+            return i;
+    }
+    return -1;
+ 
+}
+
+int String::find(const char* chars) {
+    return find(String(chars));
+}
 
 // Operator Overloading
 // Assignment operator
@@ -260,7 +272,6 @@ String& String::operator=(double rhs) {
     set_str(buffer);
     return *this;
 }
-
 
 String String::operator+(const String& rhs) {
     int new_length = length + rhs.length;
@@ -292,7 +303,6 @@ String String::operator+=(const char* rhs) {
 String String::operator+=(const String& rhs) {
     return operator+=(rhs.str);
 }
-
 
 std::ostream& operator<<(std::ostream& os, const String &obj) {
     os << obj.get_str();

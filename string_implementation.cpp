@@ -19,16 +19,8 @@ int main() {
     String s2 = s1 + " there!";
     std::cout << "s2 (s1 + \" there!\"): " + s2 << std::endl;
 
-    // Add a String to s1
-    String s3;
-    std::cout << "What's your name? ";
-    // steam extraction operator with s3
-    std::cin >> s3;
-    String s4 = s2 + " " + s3.totitle() + ".";
-
-    std::cout << '\n' << "s4(s2 + s3) : " << s4 << std::endl;
-    print("Uppercase: " + s3.toupper());
-    print("Lowercase: " + s3.tolower());
+    
+    
     String s5{16}, s6;
     s6 = 16.2;
     std::cout << "The numeric value assigned respectively to s5 and s6: "
@@ -40,7 +32,7 @@ int main() {
 
     // Slice
     String s8{"Strawberry"};
-    print("Slice[1, 5]: " + s8.slice(1, 5));
+    print("Slice[1, 5] in Strawberry: " + s8.slice(1, 5));
     std::cout << s8 << " ends with berry? "
         << (s8.ends_with("berry") ? "true" : "false")
               << std::endl;
@@ -55,5 +47,19 @@ int main() {
         << std::endl;
     print(String("Namen") * 3);
     print(4 * String("Repeat"));
+    print("Find ber in Strawberry:" + String(s8.find("ber")));
+    print("Find bar in Strawberry:" + String(s8.find("bar")));
+
+
+    // Add a String to s1
+    String s3;
+    std::cout << "What's your name? ";
+    // steam extraction operator with s3
+    std::cin >> s3;
+    String s4 = s2 + " " + s3.totitle() + ".";
+
+    std::cout << '\n' << "s4(s2 + s3) : " << s4 << std::endl;
+    print("Uppercase: " + s3.toupper());
+    print("Lowercase: " + s3.tolower());
     return 0;
 }
