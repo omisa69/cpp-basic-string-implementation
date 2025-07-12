@@ -276,6 +276,7 @@ std::vector<int> String::findall(const String& string) {
     }
     return indices;
 }
+
 std::vector<int> String::findall(const char* chars) {
     return findall(String(chars));
 }
@@ -310,17 +311,17 @@ String String::join(const std::vector<String> strings) {
     return string;
 }
 
+String String::append(const String& string) {
+    String suffix = string;
+    set_str((str + suffix).str);
+    return *this;
+}
+
 String String::prepend(const String& string) {
     String pre = string;
     set_str((pre + str).str);
     return *this;
 
-}
-
-String String::append(const String& string) {
-    String suffix = string;
-    set_str((str + suffix).str);
-    return *this;
 }
 
 String String::replace(const String& old, const String& replacer) {

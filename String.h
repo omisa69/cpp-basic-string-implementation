@@ -48,9 +48,9 @@ public:
 	std::vector<String> split(const char* chars);
 	String join(const std::vector<String> strings);
 	//String replace(const char* old, const char* _new);
-	String replace(const String& old, const String& replacer);
-	String prepend(const String& string);
 	String append(const String& string);
+	String prepend(const String& string);
+	String replace(const String& old, const String& replacer);
 	// Operator Overloading
 	String& operator=(const char* rhs);
 	String& operator=(int rhs);

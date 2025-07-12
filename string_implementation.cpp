@@ -2,7 +2,6 @@
 #include "String.h"
 #include <vector>
 
-
 int main() {
     String s1("Hello");
     // Add s1 to a C-string
@@ -19,23 +18,23 @@ int main() {
     String s2 = s1 + " there!";
     std::cout << "s2 (s1 + \" there!\"): " + s2 << std::endl;
 
-    
-    
-    String s5{16}, s6;
+
+
+    String s5{ 16 }, s6;
     s6 = 16.2;
     std::cout << "The numeric value assigned respectively to s5 and s6: "
-              << s5 + " and " + s6
-              << std::endl;
+        << s5 + " and " + s6
+        << std::endl;
     String s7{ "Hello" };
     s7 += " World!";
     print(s7);
 
     // Slice
-    String s8{"Strawberry"};
+    String s8{ "Strawberry" };
     print("Slice[1, 5] in Strawberry: " + s8.slice(1, 5));
     std::cout << s8 << " ends with berry? "
         << (s8.ends_with("berry") ? "true" : "false")
-              << std::endl;
+        << std::endl;
     std::cout << s8 << " ends with berr? "
         << (s8.ends_with("berr") ? "true" : "false")
         << std::endl;
@@ -53,7 +52,7 @@ int main() {
     print(s8.findall("r"));
 
     std::cout << "Split this sentence." << std::endl;
-    
+
     std::vector<String> words = String("split this sentences.").split();
     print(words);
     std::cout << "Now, join them back." << std::endl;
