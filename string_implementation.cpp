@@ -53,5 +53,7 @@ int main() {
     std::cout << s8 << " starts with tra? "
         << (s8.starts_with("tra") ? "true" : "false")
         << std::endl;
+    print(String("Namen") * 3);
+    print(4 * String("Repeat"));
     return 0;
 }

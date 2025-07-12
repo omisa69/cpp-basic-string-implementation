@@ -12,13 +12,13 @@ String::String(const char chars[])
 // The Numberic Constructors
 String::String(int number)
     : length{ 0 }, str{ nullptr } {
-    char buffer [100];
+    char buffer [50];
     sprintf_s(buffer, "%d", number);
     set_str(buffer);
 }
 String::String(double number)
     : length{ 0 }, str{ nullptr } {
-    char buffer[200];
+    char buffer[100];
     sprintf_s(buffer, "%f", number);
     set_str(buffer);
 }
@@ -289,6 +289,10 @@ String String::operator+=(const char* rhs) {
     return result;
 }
 
+String String::operator+=(const String& rhs) {
+    return operator+=(rhs.str);
+}
+
 
 std::ostream& operator<<(std::ostream& os, const String &obj) {
     os << obj.get_str();
@@ -307,6 +311,26 @@ String operator+(const char* lhs, const String& rhs) {
     String lhs_string{ lhs };
     String output = lhs_string + rhs;
     return output;
+}
+
+String String::operator*(int rhs) {
+    String string;
+    for (size_t i = 0; i < rhs; i++)
+    {
+        string += str;
+
+    }
+    return string;
+}
+
+String operator*(const int lhs, const String& rhs) {
+    String string;
+    for (size_t i = 0; i < lhs; i++)
+    {
+        string += rhs;
+
+    }
+    return string;
 }
 
 void print(String obj, const char* end_with) {

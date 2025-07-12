@@ -46,12 +46,18 @@ public:
 
 	String operator+(const char* rhs);
 	String operator+(const String& rhs);
+
+	String operator*(int rhs);
+
 	String operator+=(const char* rhs);
+	String operator+=(const String& rhs);
 };
 
 // Operator Overloading for Input/Output
 std::ostream& operator<<(std::ostream& os, const String& obj);
 std::istream& operator>>(std::istream& is, String& obj);
 String operator+(const char* lhs, const String& rhs);
+String operator*(const int lhs, const String& rhs);
+
 void print(String obj, const char* end_with="\n");
 #endif // !_STRING_H_
