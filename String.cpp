@@ -30,6 +30,13 @@ String::String(const String& source)
     set_str(source.str);
 }
 
+// Move Constructor
+String::String(String&& source) noexcept
+    : str{ source.str }, length{source.length} {
+    source.str = nullptr;
+}
+
+// str getter (Extranious?)
 const char* String::get_str() const {
 	return str;
 }
@@ -152,7 +159,7 @@ char String::lower_char(char C) {
     }
 }
 
-// Usefule Functions
+// Utility Functions
 int String::len() const {
     return length;
 }

@@ -24,6 +24,8 @@ public:
 	String(double number);
 	// Copy Constructor
 	String(const String& source);
+	// Move Constructor
+	String(String&& source) noexcept;
 	// Destructor
 	~String();
 
