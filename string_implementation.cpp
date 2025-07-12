@@ -49,7 +49,11 @@ int main() {
     print(4 * String("Repeat"));
     print("Find ber in Strawberry:" + String(s8.find("ber")));
     print("Find bar in Strawberry:" + String(s8.find("bar")));
+    std::cout << "Find all 'r' letters in Strawberry" << std::endl;
+    print(s8.findall("r"));
 
+    std::cout << "Split this sentence.";
+    print(String("Split this sentence.").split());
 
     // Add a String to s1
     String s3;
@@ -57,8 +61,7 @@ int main() {
     // steam extraction operator with s3
     std::cin >> s3;
     String s4 = s2 + " " + s3.totitle() + ".";
-
-    std::cout << '\n' << "s4(s2 + s3) : " << s4 << std::endl;
+    std::cout << "s4(s2 + s3) : " << s4 << std::endl;
     print("Uppercase: " + s3.toupper());
     print("Lowercase: " + s3.tolower());
     return 0;

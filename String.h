@@ -42,6 +42,10 @@ public:
 	bool starts_with(const char* chars);
 	int find(const String& string);
 	int find(const char* chars);
+	std::vector<int> findall(const String& string);
+	std::vector<int> findall(const char* chars);
+	std::vector<String> split(const String& delimiter=" ");
+	std::vector<String> split(const char* chars);
 	// Operator Overloading
 	String& operator=(const char* rhs);
 	String& operator=(int rhs);
@@ -64,6 +68,7 @@ String operator*(const int lhs, const String& rhs);
 
 // Utility friend function
 void print(String obj, const char* end_with="\n");
-
-
+void print(std::vector<String> strings);
+void print(std::vector<int> numbers);
+void print(std::vector<String> numbers);
 #endif // !_STRING_H_

@@ -259,6 +259,46 @@ int String::find(const char* chars) {
     return find(String(chars));
 }
 
+std::vector<int> String::findall(const String& string) {
+    std::vector<int> indices;
+    int index = find(string);
+    int start{};
+    if (index == -1) {
+        return indices;
+    }
+    while (index != -1) {
+        indices.push_back(index);
+        start = index + string.length;
+        index = slice(start, length).find(string);
+        if (index != -1) {
+            index += start;
+        }
+    }
+    return indices;
+}
+std::vector<int> String::findall(const char* chars) {
+    return findall(String(chars));
+}
+
+std::vector<String> String::split(const String& delimiter) {
+    std::vector<String> substrings;
+    std::vector<int> indices = findall(delimiter);
+    int start{}, stop{};
+    for (auto index : indices) {
+        stop = index;
+        if (stop > start)
+            substrings.push_back(slice(start, stop));
+        start = stop + delimiter.length;
+    }
+    if (start < length)
+        substrings.push_back(slice(start, length));
+    return substrings;
+}
+
+std::vector<String> String::split(const char* chars) {
+    return split(String(chars));
+}
+
 // Operator Overloading
 // Assignment operator
 String& String::operator=(const char* rhs) {
@@ -356,5 +396,35 @@ void print(String obj, const char* end_with) {
     }
     else {
         std::cout << obj << end_with;
+    }
+}
+
+void print(std::vector<int> numbers) {
+    size_t size = numbers.size();
+    if (size > 0) {
+        std::cout << "[";
+        for (size_t i = 0; i < size - 1; i++)
+        {
+            std::cout << numbers.at(i) << ", ";
+        }
+        std::cout << numbers.at(size - 1) << "]" << std::endl;
+    }
+    else {
+        std::cout << "[]" << std::endl;
+    }
+}
+
+void print(std::vector<String> numbers) {
+    size_t size = numbers.size();
+    if (size > 0) {
+        std::cout << "[";
+        for (size_t i = 0; i < size - 1; i++)
+        {
+            std::cout << numbers.at(i) << ", ";
+        }
+        std::cout << numbers.at(size - 1) << "]" << std::endl;
+    }
+    else {
+        std::cout << "[]" << std::endl;
     }
 }
