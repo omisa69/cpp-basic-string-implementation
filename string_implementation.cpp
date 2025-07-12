@@ -52,9 +52,15 @@ int main() {
     std::cout << "Find all 'r' letters in Strawberry" << std::endl;
     print(s8.findall("r"));
 
-    std::cout << "Split this sentence.";
-    print(String("Split this sentence.").split());
-
+    std::cout << "Split this sentence." << std::endl;
+    
+    std::vector<String> words = String("split this sentences.").split();
+    print(words);
+    std::cout << "Now, join them back." << std::endl;
+    String sentence = String(" ").join(words);
+    print(sentence);
+    std::cout << "Replace s letters with M." << std::endl;
+    print(sentence.replace("s", "M"));
     // Add a String to s1
     String s3;
     std::cout << "What's your name? ";

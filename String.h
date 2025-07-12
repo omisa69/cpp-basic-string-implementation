@@ -46,6 +46,11 @@ public:
 	std::vector<int> findall(const char* chars);
 	std::vector<String> split(const String& delimiter=" ");
 	std::vector<String> split(const char* chars);
+	String join(const std::vector<String> strings);
+	//String replace(const char* old, const char* _new);
+	String replace(const String& old, const String& replacer);
+	String prepend(const String& string);
+	String append(const String& string);
 	// Operator Overloading
 	String& operator=(const char* rhs);
 	String& operator=(int rhs);

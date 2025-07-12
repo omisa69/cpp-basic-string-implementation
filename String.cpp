@@ -299,6 +299,43 @@ std::vector<String> String::split(const char* chars) {
     return split(String(chars));
 }
 
+String String::join(const std::vector<String> strings) {
+    size_t size = strings.size();
+    String string = strings.at(0);
+    for (size_t i = 1; i < size; i++)
+    {
+        string += str;
+        string += strings.at(i);
+    }
+    return string;
+}
+
+String String::prepend(const String& string) {
+    String pre = string;
+    set_str((pre + str).str);
+    return *this;
+
+}
+
+String String::append(const String& string) {
+    String suffix = string;
+    set_str((str + suffix).str);
+    return *this;
+}
+
+String String::replace(const String& old, const String& replacer) {
+    std::vector<String> words = split(old);
+    String delimiter = replacer;
+    String result = delimiter.join(words);
+    if (starts_with(old)) {
+        result.prepend(replacer);
+    }
+    if (ends_with(old)) {
+        result.append(replacer);
+    }
+    return result;
+}
+
 // Operator Overloading
 // Assignment operator
 String& String::operator=(const char* rhs) {
