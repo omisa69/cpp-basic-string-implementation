@@ -33,6 +33,11 @@ public:
 	String toupper();
 	String tolower();
 	String totitle();
+	String slice(int start, int stop, int step=1); // end is not included 
+	bool ends_with(const char* chars);
+	bool ends_with(const String& criterion);
+	bool starts_with(const String& criterion);
+	bool starts_with(const char* chars);
 
 	// Operator Overloading
 	String& operator=(const char* rhs);

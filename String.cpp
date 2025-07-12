@@ -204,6 +204,42 @@ String String::totitle() {
     return titlecase;
 }
 
+String String::slice(int start, int end, int step) {
+    if (start >= end || end > length || start >= length)
+        return String();
+    int slice_length = end - start;
+    char* buffer = new char [slice_length + 1];
+    for (size_t i = 0; i < slice_length; i+=step)
+    {
+        buffer[i] = str[i + start];
+    }
+    buffer[slice_length] = '\0';
+    String slice (buffer);
+    delete[] buffer;
+    return slice;
+}
+
+bool String::ends_with(const String& criterion) {
+    int stop = length;
+    int start = length - criterion.length;
+    return strcmp(criterion.str, slice(start, stop).str) == 0;
+}
+
+bool String::ends_with(const char* chars) {
+    return ends_with(String(chars));
+}
+
+bool String::starts_with(const String& criterion) {
+    int start = 0;
+    int stop = criterion.length;
+    return strcmp(criterion.str, slice(start, stop).str) == 0;
+}
+
+bool String::starts_with(const char* chars) {
+    return starts_with(String(chars));
+}
+
+
 // Operator Overloading
 // Assignment operator
 String& String::operator=(const char* rhs) {

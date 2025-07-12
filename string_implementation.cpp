@@ -36,6 +36,22 @@ int main() {
               << std::endl;
     String s7{ "Hello" };
     s7 += " World!";
-    std::cout << s7;
+    print(s7);
+
+    // Slice
+    String s8{"Strawberry"};
+    print("Slice[1, 5]: " + s8.slice(1, 5));
+    std::cout << s8 << " ends with berry? "
+        << (s8.ends_with("berry") ? "true" : "false")
+              << std::endl;
+    std::cout << s8 << " ends with berr? "
+        << (s8.ends_with("berr") ? "true" : "false")
+        << std::endl;
+    std::cout << s8 << " starts with Stra? "
+        << (s8.starts_with("Stra") ? "true" : "false")
+        << std::endl;
+    std::cout << s8 << " starts with tra? "
+        << (s8.starts_with("tra") ? "true" : "false")
+        << std::endl;
     return 0;
 }
